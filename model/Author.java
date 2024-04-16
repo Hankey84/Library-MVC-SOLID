@@ -10,5 +10,8 @@ public class Author {
     public String getAuthorName(){
         return authorName;
     }
-
+@Override
+public String toString() { 
+    return authorName;
+}
 }

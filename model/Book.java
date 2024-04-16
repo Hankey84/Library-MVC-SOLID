@@ -9,7 +9,7 @@ public class Book extends PrintEdition {
     private List<Author> authors;
     private String genre;
 
-    public Book(String title, Author author, int year, String genre) {
+    public Book(String title, Author author, String genre, int year) {
         super(title, year);
         this.author = author;
         this.genre = genre;
@@ -31,6 +31,11 @@ public class Book extends PrintEdition {
 
     public String getGenre() {
         return genre;
+    }
+
+    @Override
+    public String toString() {
+        return "Инв.№ "+ id + ", '" + title + "', " + author + ", '" + genre + "', " + year + "г.";
     }
 
 }
