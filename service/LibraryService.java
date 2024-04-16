@@ -7,14 +7,37 @@ import model.*;
 
 public class LibraryService {
 
-    List<PrintEdition> library = new ArrayList<>();
+    private List<PrintEdition> publications = new ArrayList<>();
+    private List<Author> authors = new ArrayList<>();
 
     public void addBook(PrintEdition publication) {
-        library.add(publication);
+        publications.add(publication);
+        if (publication instanceof Book) {
+            Book book = (Book) publication;
+            List<Author> bookAuthors = book.getAuthorList();
+            if (bookAuthors != null) {
+                for (Author author : bookAuthors) {
+                    if (!authors.contains(author)) {
+                        authors.add(author);
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    public List<PrintEdition> getLibrary() {
+        return publications;
     }
 
-    public List<PrintEdition> getLibrary(String type) {
-        return library;
+    public void addAuthor(Author author) {
+        if (!authors.contains(author)) {
+            authors.add(author);
+        }
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
     }
 
 }

@@ -1,12 +1,12 @@
 package model;
 
-import java.util.ArrayList;
+// import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends PrintEdition {
 
     private Author author;
-    private List<Author> authors;
+    private List<Author> coauthors;
     private String genre;
 
     public Book(String title, Author author, String genre, int year) {
@@ -15,18 +15,19 @@ public class Book extends PrintEdition {
         this.genre = genre;
     }
 
-    public Book(String title, List<Author> authors, int year, String genre) {
+    public Book(String title, List<Author> coauthors, String genre, int year) {
         super(title, year);
-        this.authors = new ArrayList<>();
+        this.coauthors = coauthors;
         this.genre = genre;
     }
 
+  
     public Author getAuthor() {
         return author;
     }
 
     public List<Author> getAuthorList() {
-        return authors;
+        return coauthors;
     }
 
     public String getGenre() {
@@ -35,7 +36,18 @@ public class Book extends PrintEdition {
 
     @Override
     public String toString() {
-        return "Инв.№ "+ id + ", '" + title + "', " + author + ", '" + genre + "', " + year + "г.";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Инв.№ ").append(id).append(", '").append(title).append("', ");
+        if (author != null) {
+            stringBuilder.append(author);
+        } else if (coauthors != null) {
+            for (Author a : coauthors) {
+                stringBuilder.append(a).append(", ");
+            }
+        }
+        stringBuilder.append("'").append(genre).append("', ").append(year).append("г.");
+        return stringBuilder.toString();
     }
+    
 
 }
