@@ -1,4 +1,3 @@
-
 import model.*;
 import view.LibraryView;
 
@@ -32,6 +31,8 @@ public class Main {
         PrintEdition book7 = new Book("Руслан и Людмила", author5, "Классика", 1820);
         PrintEdition book8 = new Book("Пикник на обочине", coauthors1.getAuthors(), "Фантастика", 1972);
         PrintEdition book9 = new Book("Золотой телёнок", coauthors2.getAuthors(), "Комедия", 1931);
+        PrintEdition book10 = new Book("Трудно быть Богом", coauthors1.getAuthors(), "Комедия", 1963);
+
         // Создаём библиотеку
         LibraryView library = new LibraryView();
         library.addPublication(book1);
@@ -43,6 +44,8 @@ public class Main {
         library.addPublication(book7);
         library.addPublication(book8);
         library.addPublication(book9);
+        library.addPublication(book10);
+
         // Вывод информации о всех книгах в библиотеке (первоначально)
         System.out.println(library.getLibrary());
 
@@ -51,5 +54,15 @@ public class Main {
         library.borrowBook("Золотой телёнок");
         System.out.println(library.getLibrary());
 
+        // Пример поиска книги по предикатам
+        final String filterToFindTitle = "1984";
+        library.findBooks(book -> book.getTitle().equals(filterToFindTitle), filterToFindTitle);
+        final int filterToFindYear = 2018;
+        library.findBooks(book -> book.getYear() == filterToFindYear, filterToFindYear);
+        final int filterToFindID = 4;
+        library.findBooks(book -> book.getID() == filterToFindID, filterToFindID);
+        // Пример поиска книги по автору(ам)
+        final String filterToFindAuthor = "А.Н. Стругацкий"; 
+        library.findBooksByAuthor(filterToFindAuthor);
     }
 }

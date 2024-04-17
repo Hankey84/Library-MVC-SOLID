@@ -2,6 +2,8 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+
 import model.*;
 import controll.LibraryController;
 
@@ -21,6 +23,14 @@ public class LibraryView {
 
     public PrintEdition borrowBook(String title) {
         return controller.borrowBook(title);
+    }
+
+    public void findBooks(Predicate<PrintEdition> predicate, Object filter) {
+        controller.findBooks(predicate, filter);
+    }
+
+    public void findBooksByAuthor(String authorName){
+        controller.findBooksByAuthor(authorName);
     }
 
     public List<PrintEdition> getLibrary() {

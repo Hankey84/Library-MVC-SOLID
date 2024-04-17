@@ -16,9 +16,9 @@ public abstract class PrintEdition {
         this.year = year;
     }
 
-    public PrintEdition() {
+    // public PrintEdition() {
 
-    }
+    // }
 
     public String getTitle() {
         return title;
@@ -26,6 +26,10 @@ public abstract class PrintEdition {
 
     public int getYear() {
         return year;
+    }
+
+    public int getID() {
+        return id;
     }
 
 }

@@ -1,6 +1,8 @@
 package controll;
 
 import java.util.List;
+import java.util.function.Predicate;
+
 import model.*;
 import service.LibraryService;
 
@@ -14,6 +16,14 @@ public class LibraryController {
 
     public PrintEdition borrowBook(String title){
         return service.borrowBook(title);
+    }
+
+    public void findBooks(Predicate<PrintEdition> predicate, Object filter) {
+        service.findBooks(predicate, filter);
+    }
+
+    public void findBooksByAuthor(String authorName){
+        service.findBooksByAuthor(authorName);
     }
 
     public List<PrintEdition> getLibrary() {
