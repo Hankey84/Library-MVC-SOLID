@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
+import java.util.Iterator;
+
 import model.*;
 
 public class LibraryService {
@@ -33,31 +35,32 @@ public class LibraryService {
     }
 
     public PrintEdition borrowBook(String title) {
-        for (PrintEdition book : publications) {
+        Iterator<PrintEdition> iterator = publications.iterator();
+        while (iterator.hasNext()) {
+            PrintEdition book = iterator.next();
             if (book.getTitle().equals(title)) {
                 addIssuedPublication(book); // Добавляем книгу в раздел "Выданное"
-                publications.remove(book); // Убираем эту книгу из библиотеки
-                System.out.println("Была выдана книга: " + book);
+                iterator.remove(); // Безопасно удаляем эту книгу из библиотеки
                 return book;
             }
         }
         return null;
     }
+    
 
     // Универсальный метод для поиска книги по заданному предикату(кроме автора(ов))
-    public void findBooks(Predicate<PrintEdition> predicate, Object filter) {
+    public List<PrintEdition> findBooks(Predicate<PrintEdition> predicate, Object filter) {
         List<PrintEdition> result = new ArrayList<>();
         for (PrintEdition book : publications) {
             if (predicate.test(book)) {
                 result.add(book);
             }
         }
-        System.out.printf("Были найдены по запросу {%s} книги: %s\n", filter, result);
-
+        return result;
     }
 
     // Метод для поиска книги по автору(ам)
-    public void findBooksByAuthor(String authorName) {
+    public List<PrintEdition> findBooksByAuthor(String authorName) {
         List<PrintEdition> result = new ArrayList<>();
         for (PrintEdition book : publications) {
             if (book instanceof Book) {
@@ -74,7 +77,7 @@ public class LibraryService {
                 }
             }
         }
-        System.out.printf("Были найдены по запросу {%s} книги: %s\n", authorName, result);
+        return result;
     }
 
     public List<PrintEdition> getLibrary() {

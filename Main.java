@@ -31,7 +31,7 @@ public class Main {
         PrintEdition book7 = new Book("Руслан и Людмила", author5, "Классика", 1820);
         PrintEdition book8 = new Book("Пикник на обочине", coauthors1.getAuthors(), "Фантастика", 1972);
         PrintEdition book9 = new Book("Золотой телёнок", coauthors2.getAuthors(), "Комедия", 1931);
-        PrintEdition book10 = new Book("Трудно быть Богом", coauthors1.getAuthors(), "Комедия", 1963);
+        PrintEdition book10 = new Book("Трудно быть Богом", coauthors1.getAuthors(), "Фантастика", 1963);
 
         // Создаём библиотеку
         LibraryView library = new LibraryView();
@@ -55,9 +55,9 @@ public class Main {
         System.out.println(library.getLibrary());
 
         // Пример поиска книги по предикатам
-        final String filterToFindTitle = "1984";
+        final String filterToFindTitle = "Дисгардиум";
         library.findBooks(book -> book.getTitle().equals(filterToFindTitle), filterToFindTitle);
-        final int filterToFindYear = 2018;
+        final int filterToFindYear = 2023;
         library.findBooks(book -> book.getYear() == filterToFindYear, filterToFindYear);
         final int filterToFindID = 4;
         library.findBooks(book -> book.getID() == filterToFindID, filterToFindID);

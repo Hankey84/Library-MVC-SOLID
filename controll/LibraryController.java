@@ -18,12 +18,12 @@ public class LibraryController {
         return service.borrowBook(title);
     }
 
-    public void findBooks(Predicate<PrintEdition> predicate, Object filter) {
-        service.findBooks(predicate, filter);
+    public List<PrintEdition> findBooks(Predicate<PrintEdition> predicate, Object filter) {
+        return service.findBooks(predicate, filter);
     }
 
-    public void findBooksByAuthor(String authorName){
-        service.findBooksByAuthor(authorName);
+    public List<PrintEdition> findBooksByAuthor(String authorName){
+        return service.findBooksByAuthor(authorName);
     }
 
     public List<PrintEdition> getLibrary() {

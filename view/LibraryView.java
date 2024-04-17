@@ -22,15 +22,18 @@ public class LibraryView {
     }
 
     public PrintEdition borrowBook(String title) {
+        System.out.println("Была выдана книга: " + controller.borrowBook(title));        
         return controller.borrowBook(title);
     }
 
-    public void findBooks(Predicate<PrintEdition> predicate, Object filter) {
-        controller.findBooks(predicate, filter);
+    public List<PrintEdition> findBooks(Predicate<PrintEdition> predicate, Object filter) {
+        System.out.printf("Были найдены по запросу {%s} книги: %s\n", filter, controller.findBooks(predicate, filter));
+        return controller.findBooks(predicate, filter);
     }
 
-    public void findBooksByAuthor(String authorName){
-        controller.findBooksByAuthor(authorName);
+    public List<PrintEdition> findBooksByAuthor(String authorName){
+        System.out.printf("Были найдены по запросу {%s} книги: %s\n", authorName, controller.findBooksByAuthor(authorName));
+        return controller.findBooksByAuthor(authorName);
     }
 
     public List<PrintEdition> getLibrary() {
