@@ -8,8 +8,12 @@ public class LibraryController {
 
     LibraryService service = new LibraryService();
    
-    public void addBook(PrintEdition publication) {
-        service.addBook(publication);
+    public void addPublication(PrintEdition publication) {
+        service.addPublication(publication);
+    }
+
+    public PrintEdition borrowBook(String title){
+        return service.borrowBook(title);
     }
 
     public List<PrintEdition> getLibrary() {

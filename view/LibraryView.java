@@ -14,9 +14,13 @@ public class LibraryView {
         this.coAuthors = new ArrayList<>();
     }
 
-    public void addBook(PrintEdition publication) {
+    public void addPublication(PrintEdition publication) {
         System.out.printf("Книга %s добавлена в библиотеку\n", publication);
-        controller.addBook(publication);
+        controller.addPublication(publication);
+    }
+
+    public PrintEdition borrowBook(String title) {
+        return controller.borrowBook(title);
     }
 
     public List<PrintEdition> getLibrary() {

@@ -37,7 +37,7 @@ public class Book extends PrintEdition {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Инв.№ ").append(id).append(", '").append(title).append("', ");
+        stringBuilder.append("{Инв.№ ").append(id).append(", '").append(title).append("', ");
         if (author != null) {
             stringBuilder.append(author);
         } else if (coauthors != null) {
@@ -45,7 +45,7 @@ public class Book extends PrintEdition {
                 stringBuilder.append(a).append(", ");
             }
         }
-        stringBuilder.append("'").append(genre).append("', ").append(year).append("г.");
+        stringBuilder.append(",'").append(genre).append("', ").append(year).append("г.}");
         return stringBuilder.toString();
     }
     
