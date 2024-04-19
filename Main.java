@@ -32,7 +32,6 @@ public class Main {
         PrintEdition book8 = new Book("Пикник на обочине", coauthors1.getAuthors(), "Фантастика", 1972);
         PrintEdition book9 = new Book("Золотой телёнок", coauthors2.getAuthors(), "Комедия", 1931);
         PrintEdition book10 = new Book("Трудно быть Богом", coauthors1.getAuthors(), "Фантастика", 1963);
-
         // Создаём библиотеку
         LibraryView library = new LibraryView();
         library.addPublication(book1);
@@ -48,12 +47,10 @@ public class Main {
 
         // Вывод информации о всех книгах в библиотеке (первоначально)
         System.out.println(library.getLibrary());
-
         // Пример выдачи книги из библиотеки по названию
         library.borrowBook("Война и мир");
         library.borrowBook("Золотой телёнок");
         System.out.println(library.getLibrary());
-
         // Пример поиска книги по предикатам
         final String filterToFindTitle = "Дисгардиум";
         library.findBooks(book -> book.getTitle().equals(filterToFindTitle), filterToFindTitle);
@@ -64,5 +61,12 @@ public class Main {
         // Пример поиска книги по автору(ам)
         final String filterToFindAuthor = "А.Н. Стругацкий"; 
         library.findBooksByAuthor(filterToFindAuthor);
+        //Посмотреть список выданных книг:
+        System.out.println(library.getIssuedBooks());
+        //Сортируем книги по названию
+        library.sortPrintEditions(PrintEditionComparator.byTitle());
+        //Сортируем книги по автору
+        // library.sortPrintEditionsByAuthor();
+        System.out.println(library.getLibrary());
     }
 }

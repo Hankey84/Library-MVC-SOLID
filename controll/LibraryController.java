@@ -9,12 +9,12 @@ import service.LibraryService;
 public class LibraryController {
 
     LibraryService service = new LibraryService();
-   
+
     public void addPublication(PrintEdition publication) {
         service.addPublication(publication);
     }
 
-    public PrintEdition borrowBook(String title){
+    public PrintEdition borrowBook(String title) {
         return service.borrowBook(title);
     }
 
@@ -22,12 +22,16 @@ public class LibraryController {
         return service.findBooks(predicate, filter);
     }
 
-    public List<PrintEdition> findBooksByAuthor(String authorName){
+    public List<PrintEdition> findBooksByAuthor(String authorName) {
         return service.findBooksByAuthor(authorName);
     }
 
     public List<PrintEdition> getLibrary() {
         return service.getLibrary();
+    }
+
+    public List<PrintEdition> getIssuedBooks() {
+        return service.getIssuedBooks();
     }
 
     public List<Author> getAuthors() {

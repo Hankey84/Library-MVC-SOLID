@@ -1,6 +1,5 @@
 package model;
 
-// import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends PrintEdition {
@@ -20,8 +19,7 @@ public class Book extends PrintEdition {
         this.coauthors = coauthors;
         this.genre = genre;
     }
-
-  
+ 
     public Author getAuthor() {
         return author;
     }
@@ -47,7 +45,7 @@ public class Book extends PrintEdition {
         }
         stringBuilder.append(",'").append(genre).append("', ").append(year).append("г.}");
         return stringBuilder.toString();
-    }
+    }    
     
 
 }

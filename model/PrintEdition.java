@@ -1,5 +1,8 @@
 package model;
 
+import java.util.Comparator;
+import java.util.List;
+
 public abstract class PrintEdition {
     private static int number;
     protected String title;
@@ -16,10 +19,6 @@ public abstract class PrintEdition {
         this.year = year;
     }
 
-    // public PrintEdition() {
-
-    // }
-
     public String getTitle() {
         return title;
     }
@@ -32,4 +31,8 @@ public abstract class PrintEdition {
         return id;
     }
 
+    // Метод сортировки печатных изданий по выбранному фильтру
+    public static void sortBy(List<PrintEdition> editions, Comparator<PrintEdition> comparator) {
+        editions.sort(comparator);
+    }
 }

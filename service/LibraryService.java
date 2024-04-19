@@ -10,7 +10,6 @@ import model.*;
 
 public class LibraryService {
 
-    // private String filter;
     private List<PrintEdition> publications = new ArrayList<>();
     private List<PrintEdition> issuedPublication = new ArrayList<>();
     private List<Author> authors = new ArrayList<>();
@@ -30,7 +29,7 @@ public class LibraryService {
         }
     }
 
-    public void addIssuedPublication(PrintEdition publication) {
+    private void addIssuedPublication(PrintEdition publication) {
         issuedPublication.add(publication);
     }
 
@@ -47,7 +46,6 @@ public class LibraryService {
         return null;
     }
     
-
     // Универсальный метод для поиска книги по заданному предикату(кроме автора(ов))
     public List<PrintEdition> findBooks(Predicate<PrintEdition> predicate, Object filter) {
         List<PrintEdition> result = new ArrayList<>();
@@ -84,6 +82,10 @@ public class LibraryService {
         return publications;
     }
 
+    public List<PrintEdition> getIssuedBooks() {
+        return issuedPublication;
+    }
+
     public void addAuthor(Author author) {
         if (!authors.contains(author)) {
             authors.add(author);
@@ -93,5 +95,4 @@ public class LibraryService {
     public List<Author> getAuthors() {
         return authors;
     }
-
 }
